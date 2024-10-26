@@ -108,10 +108,12 @@ def add_company_to_collection(
 
 @router.post("/bulk-add")
 def start_bulk_add(source_collection_id: str, target_collection_id: str):
+    print('here')
+    print(source_collection_id + target_collection_id)
     """
     Starts the bulk add task and returns the task ID for tracking.
     """
-    task = bulk_add_companies.delay(source_collection_id, target_collection_id) 
+    task = bulk_add_companies.delay(source_collection_id=source_collection_id, target_collection_id=target_collection_id) 
     return {"task_id": task.id}
 
 @router.get("/task-status/{task_id}")

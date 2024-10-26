@@ -51,7 +51,14 @@ function App() {
           </div>
           <div className="w-4/5 ml-4">
             {selectedCollectionId && (
-              <CompanyTable selectedCollectionId={selectedCollectionId} />
+              <CompanyTable
+                selectedCollectionId={selectedCollectionId}
+                listName={
+                  collectionResponse?.find((c) => c.id === selectedCollectionId)
+                    ?.collection_name ?? "This collection"
+                }
+                availableCollections={collectionResponse}
+              />
             )}
           </div>
         </div>

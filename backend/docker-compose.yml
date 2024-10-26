@@ -21,6 +21,7 @@ services:
       - redis
     working_dir: /app
     environment:
+      - DATABASE_URL=postgresql://postgres:postgres@postgres-jam-db:5432/harmonicjam
       - CELERY_BROKER_URL=redis://redis:6379
       - CELERY_RESULT_BACKEND=redis://redis:6379
       - CELERY_IMPORTS=backend.queue.tasks
