@@ -7,6 +7,7 @@ from starlette.middleware.cors import CORSMiddleware
 
 from backend.db import database
 from backend.routes import collections, companies
+from backend.queue.task_queue import task_manager
 
 
 @asynccontextmanager
@@ -89,7 +90,6 @@ EXECUTE FUNCTION throttle_updates();
     """)
     )
     db.commit()
-
 
 app.include_router(companies.router)
 app.include_router(collections.router)
